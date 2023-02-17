@@ -21,7 +21,6 @@ public class AuthFilter implements Filter {
         HttpSession session = req.getSession();
         if(session.getAttribute("user") == null){
             res.sendRedirect("login.jsp");
-            System.out.println("inside for loop");
         }
         filterChain.doFilter(servletRequest,servletResponse);
     }

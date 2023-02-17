@@ -14,12 +14,12 @@ public class LoginServlet extends HttpServlet {
         super.init();
     }
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         HttpSession session = request.getSession();
         if(session.getAttribute("user") != null){
             response.sendRedirect("/user/hello.jsp");
         } else {
-            response.sendRedirect("login.jsp");
+            request.getRequestDispatcher("login.jsp").forward(request,response);
         }
     }
     @Override
